@@ -89,7 +89,7 @@ class MainPage extends React.Component {
             const res = await resPromise;
             const payload = res.data;
 
-            this.setState({ predictions: payload.predictions,  isLoading: false });
+            this.setState({ predictions: payload.predictions,  isLoading: false, heatmap: "{{ image }}" });
             console.log(payload)
         } catch (e) {
            alert(e)
@@ -152,7 +152,7 @@ class MainPage extends React.Component {
                     </div>
 
                     <img src={this.state.file} className={"img-preview"} hidden={!this.state.imageSelected} />
-                    <img src="{{ image }}" className={"img-preview"} hidden={this.state.predictions.value=[]} />
+                    <img src={this.state.heatmap} className={"img-preview"} hidden={this.state.predictions.value=[]} />
     
                     <div>
                         <FormGroup>
