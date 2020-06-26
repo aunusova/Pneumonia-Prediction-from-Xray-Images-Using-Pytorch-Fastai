@@ -114,7 +114,7 @@ def static_file(path):
 
 @app.route('/')
 def root():
-    return app.send_static_file('/templates/index.html')
+    return app.send_static_file('index.html')
 
 
 def before_request():
