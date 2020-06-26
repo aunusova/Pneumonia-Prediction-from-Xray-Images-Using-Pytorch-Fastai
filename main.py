@@ -37,7 +37,7 @@ def load_model(path=".", model_name="export.pkl"):
     return learn
 
 
-def load_image_url(url) -> Image:
+def load_image_url(url: str) -> Image:
     response = requests.get(url)
     img = open_image(BytesIO(response.content))
     return img
