@@ -1,4 +1,4 @@
-FROM python:3.6.6-slim-stretch
+FROM python:3.8.2
 
 RUN apt update && \
     apt install -y python3-dev gcc
@@ -7,28 +7,22 @@ WORKDIR app
 # Install pytorch and fastai
 #RUN pip install torch_nightly -f https://download.pytorch.org/whl/nightly/cpu/torch_nightly.html
 
+RUN pip install --upgrade pip
+
+
 ADD requirements.txt .
 RUN pip install -r requirements.txt
 #pip install --no-cache-dir -r
-ADD models models
-#ADD src src
+ADD src/models models
+ADD src src
 
 #ADD main.py .
 #ADD config.yaml .
 
 # Run it once to trigger resnet download
-RUN python main.py prepare
+RUN python src/main.py prepare
 
 #EXPOSE 5000
 
 # Start the server
-<<<<<<< Updated upstream
 CMD ["python", "src/main.py", "serve"]
-
-
-
-
-
-=======
-CMD ["python", "main.py", "serve"]
->>>>>>> Stashed changes
