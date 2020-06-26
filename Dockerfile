@@ -10,21 +10,25 @@ WORKDIR app
 ADD requirements.txt .
 RUN pip install -r requirements.txt
 #pip install --no-cache-dir -r
-ADD src/models models
-ADD src src
+ADD models models
+#ADD src src
 
 #ADD main.py .
 #ADD config.yaml .
 
 # Run it once to trigger resnet download
-RUN python src/main.py prepare
+RUN python main.py prepare
 
 #EXPOSE 5000
 
 # Start the server
+<<<<<<< Updated upstream
 CMD ["python", "src/main.py", "serve"]
 
 
 
 
 
+=======
+CMD ["python", "main.py", "serve"]
+>>>>>>> Stashed changes
