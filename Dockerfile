@@ -1,7 +1,6 @@
 FROM python:3.8.2
 
-RUN apt update && \
-    apt install -y python3-dev gcc
+RUN apt update && apt install -y python3-dev gcc
 
 WORKDIR app 
 # Install pytorch and fastai
