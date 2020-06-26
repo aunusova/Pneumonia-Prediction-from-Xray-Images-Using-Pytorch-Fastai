@@ -10,6 +10,7 @@ import numpy as np
 from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 from matplotlib.figure import Figure
 import base64
+import io
 
 
 class GradCam():
@@ -82,13 +83,13 @@ class GradCam():
                 row_axes[col].set_title(label2_title)
         # plt.tight_layout() op
         fig.subplots_adjust(wspace=0, hspace=0)
-        logging.warning("3")
         pngImage = io.BytesIO()
         FigureCanvas(fig).print_png(pngImage)
         # Encode PNG image to base64 string
         pngImageB64String = "data:image/png;base64,"
         pngImageB64String += base64.b64encode(pngImage.getvalue()).decode('utf8')
         image=pngImageB64String
+        logging.warning("3")
         return image
 
 
