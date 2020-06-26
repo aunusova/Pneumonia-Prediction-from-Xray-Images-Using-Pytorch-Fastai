@@ -16,8 +16,10 @@ from gradcam2 import *
 import torchvision
 from torchvision import transforms
 from PIL import Image
-import tempfile
-import shutil
+from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
+from matplotlib.figure import Figure
+import base64
+
 
 with open("src/config.yaml", 'r') as stream:
     APP_CONFIG = yaml.safe_load(stream)
@@ -64,9 +66,9 @@ def predict(img, n: int = 3) -> Dict[str, Union[str, List]]:
     predictions = predictions[0:1]
 
     gcam = GradCam.from_one_img(model,img)
-    gcam.plot(plot_gbp=False)
+    image = gcam.plot(plot_gbp=False)
 
-    return {"class": str(pred_class), "predictions": predictions}
+    return {"class": str(pred_class), "predictions": predictions, "image": image}
 
 @app.route('/api/classify', methods=['POST', 'GET'])
 def upload_file():

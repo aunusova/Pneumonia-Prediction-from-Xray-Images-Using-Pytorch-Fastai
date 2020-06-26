@@ -79,7 +79,14 @@ class GradCam():
         # plt.tight_layout()
         fig.subplots_adjust(wspace=0, hspace=0)
         logging.warning("3")
-        fig.savefig('../static/outputs/gradcam.png')
+        pngImage = io.BytesIO()
+        FigureCanvas(fig).print_png(pngImage)
+        # Encode PNG image to base64 string
+        pngImageB64String = "data:image/png;base64,"
+        pngImageB64String += base64.b64encode(pngImage.getvalue()).decode('utf8')
+        image=pngImageB64String
+        return image
+
 
 def minmax_norm(x):
     logging.warning("4")
