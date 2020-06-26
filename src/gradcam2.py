@@ -7,6 +7,9 @@ import matplotlib
 import gc
 import logging
 import numpy as np
+from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
+from matplotlib.figure import Figure
+import base64
 
 
 class GradCam():
@@ -53,6 +56,7 @@ class GradCam():
         if not plot_gbp or not plot_hm:
             cols-= 2 if hasattr(self, 'label2') else 1
 
+        fig = Figure()
         fig,row_axes = plt.subplots(1,cols,figsize=(cols*5,5))  
         col=0
         size=self.xb_img.shape[-1]
@@ -76,7 +80,7 @@ class GradCam():
                 row_axes[col].imshow(self.xb_grad2)
                 row_axes[col].set_axis_off()
                 row_axes[col].set_title(label2_title)
-        # plt.tight_layout()
+        # plt.tight_layout() op
         fig.subplots_adjust(wspace=0, hspace=0)
         logging.warning("3")
         pngImage = io.BytesIO()

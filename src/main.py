@@ -16,8 +16,6 @@ from gradcam2 import *
 import torchvision
 from torchvision import transforms
 from PIL import Image
-from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
-from matplotlib.figure import Figure
 import base64
 
 
