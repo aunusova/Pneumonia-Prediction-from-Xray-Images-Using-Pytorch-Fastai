@@ -66,7 +66,7 @@ def predict(img, n: int = 3) -> Dict[str, Union[str, List]]:
     gcam = GradCam.from_one_img(model,img)
     image = gcam.plot(plot_gbp=False)
 
-    return {"class": str(pred_class), "predictions": predictions, "image": image}
+    return {"class": str(pred_class), "predictions": predictions, "image": str(image)}
 
 @app.route('/api/classify', methods=['POST', 'GET'])
 def upload_file():
