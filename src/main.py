@@ -12,7 +12,7 @@ from flask import send_file
 import requests
 import torch
 import json
-from gradcam2 import *
+from gradcam import *
 import torchvision
 from torchvision import transforms
 from PIL import Image
@@ -63,7 +63,7 @@ def predict(img, n: int = 3) -> Dict[str, Union[str, List]]:
     predictions = sorted(predictions, key=lambda x: x["output"], reverse=True)
     predictions = predictions[0:1]
 
-    gcam = GradCam.from_one_img(model,img,"pneumonia")
+    gcam = GradCam.from_one_img(model,img,'PNEUMONIA')
     image = gcam.plot(plot_gbp=False)
 
     return {"class": str(pred_class), "predictions": predictions, "image": image}
