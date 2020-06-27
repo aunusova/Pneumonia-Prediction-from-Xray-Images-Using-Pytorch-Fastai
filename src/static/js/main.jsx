@@ -39,7 +39,8 @@ class MainPage extends React.Component {
             rawFile: event.target.files[0],
             file: URL.createObjectURL(event.target.files[0]),
             imageSelected: true,
-            predictions: []
+            predictions: [],
+            heatmap_show: false,
         });
     };
 
@@ -49,7 +50,8 @@ class MainPage extends React.Component {
             this.setState({
                 file: url,
                 imageSelected: true,
-                predictions: []
+                predictions: [],
+                heatmap_show: false,
             })
         }
     };
@@ -61,7 +63,8 @@ class MainPage extends React.Component {
             predictions: [],
             rawFile: null,
             url: "",
-            heatmap: null
+            heatmap: null,
+            heatmap_show: false,
         })
     };
 
@@ -71,6 +74,7 @@ class MainPage extends React.Component {
             imageSelected: false,
             predictions: [],
             heatmap: null,
+            heatmap_show: false,
         });
 
         let resPromise = null;
@@ -99,7 +103,6 @@ class MainPage extends React.Component {
 
     renderPrediction() {
         const predictions = this.state.predictions || [];
-        this.state.heatmap_show = true;
 
         if (predictions.length > 0) {
             const predictionItems = predictions.map((item) =>
