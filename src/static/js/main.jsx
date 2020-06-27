@@ -94,7 +94,7 @@ class MainPage extends React.Component {
             const res = await resPromise;
             const payload = res.data;
 
-            this.setState({ predictions: payload.predictions,  isLoading: false, heatmap: payload.image });
+            this.setState({ predictions: payload.predictions,  isLoading: false, heatmap: payload.image, heatmap_show: true});
             console.log(payload)
         } catch (e) {
            alert(e)
@@ -103,7 +103,6 @@ class MainPage extends React.Component {
 
     renderPrediction() {
         const predictions = this.state.predictions || [];
-        this.state.heatmap_show = true;
 
         if (predictions.length > 0) {
             const predictionItems = predictions.map((item) =>
