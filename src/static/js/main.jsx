@@ -152,8 +152,12 @@ class MainPage extends React.Component {
                     </div>
 
                     <img src={this.state.file} className={"img-preview"} hidden={!this.state.imageSelected} />
-                    <img src={this.state.heatmap} className={"img-preview-1"} />
+                    <img src={this.state.heatmap} className={"img-preview-1"} hidden={this.state.imageSelected}/>
     
+                    <div class="text-center" hidden={this.state.imageSelected}>
+                        {this.renderPrediction()}
+                    </div>
+
                     <div>
                         <FormGroup>
                             <Button className="mr-1 ml-1 bg-primary border-0" onClick={this._predict} hidden={!this.state.imageSelected}
@@ -171,9 +175,7 @@ class MainPage extends React.Component {
                     </div>
                 </Form>
 
-                <div class="text-center" hidden={this.state.imageSelected}>
-                    {this.renderPrediction()}
-                </div>
+                
             </div>
         );
     }
