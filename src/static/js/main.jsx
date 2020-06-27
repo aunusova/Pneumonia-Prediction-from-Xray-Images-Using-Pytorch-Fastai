@@ -30,6 +30,7 @@ class MainPage extends React.Component {
             isLoading: false,
             selectedOption: null,
             heatmap: null,
+            heatmap_show: false,
         }
     }
 
@@ -98,6 +99,7 @@ class MainPage extends React.Component {
 
     renderPrediction() {
         const predictions = this.state.predictions || [];
+        this.state.heatmap_show = true;
 
         if (predictions.length > 0) {
             const predictionItems = predictions.map((item) =>
@@ -151,8 +153,10 @@ class MainPage extends React.Component {
                         </FormGroup>
                     </div>
 
-                    <img src={this.state.file} className={"img-preview"} hidden={!this.state.imageSelected} />
-                    <img src={this.state.heatmap} className={"img-preview-1"} hidden={this.state.predictions=null}/>
+                    <div class="text-center">
+                        <img src={this.state.file} className={"img-preview"} hidden={!this.state.imageSelected} />
+                        <img src={this.state.heatmap} className={"img-preview-1"} hidden={this.state.heatmap_show}/>
+                    </div>
     
                     <div class="text-center" hidden={this.state.imageSelected}>
                         {this.renderPrediction()}

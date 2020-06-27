@@ -10073,16 +10073,15 @@ th {
 .img-preview-1 {
   width: 600px;
   height: 300px;
-  position: fixed;
-  left: 50%;
-  /* bring your own prefixes */
-  transform: translate(-50%, -50%);
+  position: relative;
   border: 0px solid #F8F8F8;
   box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.1);
   margin-top: 3em;
   margin-bottom: 1em;
   display: block;
   align-self: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #upload_button input[type=file] {
