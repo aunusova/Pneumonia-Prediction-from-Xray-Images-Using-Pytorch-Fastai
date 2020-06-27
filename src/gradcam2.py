@@ -15,7 +15,7 @@ import io
 
 class GradCam():
     @classmethod
-    def from_one_img(cls,learn,x_img,label1='pneumonia',label2=None):
+    def from_one_img(cls,learn,x_img,label1='PNEUMONIA',label2=None):
         '''
         learn: fastai's Learner
         x_img: fastai.vision.image.Image
