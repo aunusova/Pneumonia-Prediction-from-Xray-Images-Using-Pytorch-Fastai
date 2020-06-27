@@ -103,9 +103,7 @@ class MainPage extends React.Component {
 
     renderPrediction() {
         const predictions = this.state.predictions || [];
-        this.setState({ 
-            heatmap_show: true,
-        });
+        this.state.heatmap = true;
 
         if (predictions.length > 0) {
             const predictionItems = predictions.map((item) =>
