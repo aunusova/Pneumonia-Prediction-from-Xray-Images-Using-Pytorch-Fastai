@@ -89,7 +89,7 @@ class MainPage extends React.Component {
             const res = await resPromise;
             const payload = res.data;
 
-            this.setState({ predictions: payload.predictions,  isLoading: false, heatmap: "{{ image }}" });
+            this.setState({ predictions: payload.predictions,  isLoading: false, heatmap: payload.image });
             console.log(payload)
         } catch (e) {
            alert(e)
