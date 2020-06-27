@@ -55,30 +55,14 @@ class GradCam():
         if not plot_gbp or not plot_hm:
             cols-= 2 if hasattr(self, 'label2') else 1
 
-        fig = Figure()
         fig,row_axes = plt.subplots(1,cols,figsize=(cols*5,5))  
         col=0
         size=self.xb_img.shape[-1]
-        self.xb_img.show(row_axes[col]);col+=1
+        self.xb_img.show(row_axes[col],title='Исходное изображение');col+=1
         
-        label1_title = f'{self.label1} {self.prob1:.3f}'
         if plot_hm:
             show_heatmap(self.hmap1,self.xb_img,size,row_axes[col])
-            row_axes[col].set_title(label1_title);col+=1
-        if plot_gbp:
-            row_axes[col].imshow(self.xb_grad1)
-            row_axes[col].set_axis_off()
-            row_axes[col].set_title(label1_title);col+=1
-        
-        if hasattr(self, 'label2'):
-            label2_title = f'2.{self.label2} {self.prob2:.3f}'
-            if plot_hm:
-                show_heatmap(self.hmap2,self.xb_img,size,row_axes[col])
-                row_axes[col].set_title(label2_title);col+=1
-            if plot_gbp:
-                row_axes[col].imshow(self.xb_grad2)
-                row_axes[col].set_axis_off()
-                row_axes[col].set_title(label2_title)
+            row_axes[col].set_title('Области повышенного интереса');col+=1
         # plt.tight_layout() op
         fig.subplots_adjust(wspace=0, hspace=0)
         pngImage = io.BytesIO()
