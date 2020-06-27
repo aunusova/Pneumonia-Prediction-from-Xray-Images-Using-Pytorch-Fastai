@@ -158,7 +158,7 @@ class MainPage extends React.Component {
 
                     <div class="text-center">
                         <img src={this.state.file} className={"img-preview"} hidden={!this.state.imageSelected} />
-                        <img src={this.state.heatmap} className={"img-preview-1"} hidden={!this.state.heatmap_show}/>
+                        <img src={this.state.heatmap} width={'100%'} className={"cover-heading"} hidden={!this.state.heatmap_show}/>
                     </div>
     
                     <div class="text-center" hidden={this.state.imageSelected}>
