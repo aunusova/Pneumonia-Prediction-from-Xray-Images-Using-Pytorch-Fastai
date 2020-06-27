@@ -65,6 +65,7 @@ class GradCam():
             row_axes[col].set_title('Области повышенного интереса');col+=1
         # plt.tight_layout() op
         fig.subplots_adjust(wspace=0, hspace=0)
+        fig.patch.set_facecolor('#EDF1EB')
         pngImage = io.BytesIO()
         FigureCanvas(fig).print_png(pngImage)
         # Encode PNG image to base64 string
